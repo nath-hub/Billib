@@ -1,0 +1,1586 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Bill'Lib",
+        "description": "",
+        "contact": {
+            "email": "nathalietaffot@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/public/index.php/api/update/{id}": {
+            "put": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Modifier un ticket",
+                "description": "Modifier un ticket",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "10"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nom_magasin, telephone, numero, adresse, caissiere, total_payer, net, tva"
+                                ],
+                                "properties": {
+                                    "nom_magasin": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "carrefour"
+                                    },
+                                    "telephone": {
+                                        "type": "number",
+                                        "format": "int",
+                                        "example": "12231212"
+                                    },
+                                    "numero": {
+                                        "type": "number",
+                                        "format": "int",
+                                        "example": "122312"
+                                    },
+                                    "adresse": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "11 france"
+                                    },
+                                    "caissiere": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "mathile"
+                                    },
+                                    "net": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "9100"
+                                    },
+                                    "tva": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "900"
+                                    },
+                                    "total_payer": {
+                                        "type": "number",
+                                        "format": "int",
+                                        "example": "10000"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "ticket bien modifié."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/index.php/api/destroy/{id}": {
+            "delete": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Suppression d'un ticket",
+                "description": "Suppression d'un ticket",
+                "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ticket id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "2"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "ticket bien supprimé."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/index.php/api/getPrix/{id}": {
+            "get": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "get un ticket",
+                "description": "get un ticket",
+                "operationId": "getPrix",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "10"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "ticket bien modifié."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/index.php/api/getPrixByMonth/{id}": {
+            "get": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "get un ticket",
+                "description": "get un ticket",
+                "operationId": "getPrixByMonth",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "10"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "ticket bien modifié."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/index.php/api/AddTicket": {
+            "post": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Ticket",
+                "description": "Ticket",
+                "operationId": "AddTicket",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "nom_magasin, telephone, numero, adresse, caissiere,net, tva total_payer, data"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "description": "identifiant de l'utilisateur",
+                                        "type": "number",
+                                        "format": "int",
+                                        "example": "1"
+                                    },
+                                    "nom_magasin": {
+                                        "description": "votre nom",
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "nathalie"
+                                    },
+                                    "telephone": {
+                                        "description": "votre phone",
+                                        "type": "number",
+                                        "format": "int",
+                                        "example": "1"
+                                    },
+                                    "numero": {
+                                        "description": "votre email de recuperation",
+                                        "type": "number",
+                                        "format": "string",
+                                        "example": "1"
+                                    },
+                                    "adresse": {
+                                        "description": "adresse",
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "nathalie"
+                                    },
+                                    "caissiere": {
+                                        "description": "caissiere",
+                                        "type": "string",
+                                        "format": "int",
+                                        "example": "example"
+                                    },
+                                    "net": {
+                                        "description": "net",
+                                        "type": "number",
+                                        "format": "int",
+                                        "example": "9100"
+                                    },
+                                    "tva": {
+                                        "description": "tva",
+                                        "type": "number",
+                                        "format": "int",
+                                        "example": "900"
+                                    },
+                                    "total_payer": {
+                                        "description": "total_payer",
+                                        "type": "number",
+                                        "format": "string",
+                                        "example": "100000"
+                                    },
+                                    "datas": {
+                                        "type": "array",
+                                        "items": {
+                                            "properties": {
+                                                "organization": {
+                                                    "type": "string",
+                                                    "example": "1"
+                                                },
+                                                "site": {
+                                                    "type": "string",
+                                                    "example": "1"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Test Title"
+                                                },
+                                                "affiliate": {
+                                                    "type": "string",
+                                                    "example": "1"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "example": "Description body"
+                                                },
+                                                "reported_by": {
+                                                    "type": "string",
+                                                    "example": "User Name"
+                                                },
+                                                "discovered": {
+                                                    "type": "string",
+                                                    "example": "2022-10-03"
+                                                },
+                                                "type": {
+                                                    "type": "string",
+                                                    "example": "1"
+                                                },
+                                                "affected": {
+                                                    "type": "boolean",
+                                                    "example": "true"
+                                                },
+                                                "active": {
+                                                    "type": "boolean",
+                                                    "example": "true"
+                                                },
+                                                "reason": {
+                                                    "type": "string",
+                                                    "example": ""
+                                                },
+                                                "regulatory_act": {
+                                                    "type": "string",
+                                                    "example": "HIPAA"
+                                                },
+                                                "investigating": {
+                                                    "type": "boolean",
+                                                    "example": "true"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "example": [
+                                            {
+                                                "nom": "macabo",
+                                                "quantite": 23,
+                                                "pu": 2100,
+                                                "montant": "145000",
+                                                "categories": null,
+                                                "total": 500000,
+                                                "notice": "https://meet.google.com/",
+                                                "noticeDoc": "https://meet.google.com/",
+                                                "garantie": "https://meet.google.com/",
+                                                "tuto": "https://meet.google.com/",
+                                                "reparation": "https://meet.google.com/",
+                                                "autreModele": "https://meet.google.com/",
+                                                "revente": "https://meet.google.com/"
+                                            },
+                                            {
+                                                "nom": "arachide",
+                                                "quantite": 15,
+                                                "pu": 2100,
+                                                "montant": "14500",
+                                                "categories": null,
+                                                "total": 100000,
+                                                "notice": "https://meet.google.com/",
+                                                "noticeDoc": "https://meet.google.com/",
+                                                "garantie": "https://meet.google.com/",
+                                                "tuto": "https://meet.google.com/",
+                                                "reparation": "https://meet.google.com/",
+                                                "autreModele": "https://meet.google.com/",
+                                                "revente": "https://meet.google.com/"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "ticket bien Creer."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/index.php/api/Get/{id}": {
+            "get": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Get Tikect",
+                "description": "Get Tikect",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "article id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "10"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Affichage des tickets d'un article."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/index.php/api/getTicketByUser/{id}": {
+            "get": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Get Tikect",
+                "description": "Get Tikect",
+                "operationId": "getTicketByUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "article id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "10"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Affichage des tickets d'un article."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/index.php/api/getByUser/{id}": {
+            "get": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Get Tikect",
+                "description": "Get Tikect",
+                "operationId": "getWhereUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "article id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "10"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Affichage des tickets d'un article."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/index.php/api/updateTicket/{id}": {
+            "put": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Modifier un ticket",
+                "description": "Modifier un ticket",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "10"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nom_magasin, telephone, numero, adresse, caissiere, total_payer, net, tva"
+                                ],
+                                "properties": {
+                                    "nom_magasin": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "carrefour"
+                                    },
+                                    "telephone": {
+                                        "type": "number",
+                                        "format": "int",
+                                        "example": "12231212"
+                                    },
+                                    "numero": {
+                                        "type": "number",
+                                        "format": "int",
+                                        "example": "122312"
+                                    },
+                                    "adresse": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "11 france"
+                                    },
+                                    "caissiere": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "mathile"
+                                    },
+                                    "net": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "9100"
+                                    },
+                                    "tva": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "900"
+                                    },
+                                    "total_payer": {
+                                        "type": "number",
+                                        "format": "int",
+                                        "example": "10000"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "ticket modifier avec succes."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/index.php/api/destroyTicket/{id}": {
+            "delete": {
+                "tags": [
+                    "Ticket"
+                ],
+                "summary": "Suppression d'un ticket",
+                "description": "Suppression d'un ticket",
+                "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ticket id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "2"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "ticket supprimer avec succes."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/index.php/api/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Register",
+                "description": "Register",
+                "operationId": "register",
+                "requestBody": {
+                    "description": "Enregistrement d'un nouvel utilisateur",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "votre nom",
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "nathalie"
+                                    },
+                                    "email": {
+                                        "description": "votre email",
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "examples@gmail.com"
+                                    },
+                                    "password": {
+                                        "description": "votre password",
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "sdms"
+                                    },
+                                    "code_postal": {
+                                        "description": "votre code_ ostal",
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "123456"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Utilisateur bien Creer."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "500"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur de connexion"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/index.php/api/GetUser/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get User",
+                "description": "Get User",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "10"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "affichage d'un utilisateur."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "500"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur de connexion"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/index.php/api/UpdateVerifiedEmail/{id}": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Verification d'email",
+                "description": "Verification d'email",
+                "operationId": "VerifyEmail",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "10"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Modification d'un utilisateur réussi."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "500"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur de connexion"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/index.php/api/updateCode/{id}": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "code pour scanner",
+                "description": "code pour scanner",
+                "operationId": "modifierCode",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "10"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "code"
+                                ],
+                                "properties": {
+                                    "code": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "yt5e4w"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Modification d'un utilisateur réussi."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "500"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur de connexion"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/index.php/api/updatePassword/{id}": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "mettre a jour le mot de passe",
+                "description": "mettre a jour le mot de passe",
+                "operationId": "modifierPassword",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "10"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "code"
+                                ],
+                                "properties": {
+                                    "password": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "yt5e4w"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Modification d'un utilisateur réussi."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "500"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur de connexion"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/index.php/api/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Login",
+                "description": "Logim",
+                "operationId": "login",
+                "requestBody": {
+                    "description": "connexion d'un nouvel utilisateur",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "email or identifiant": {
+                                        "description": "votre email ou identifiant",
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "examples@gmail.com"
+                                    },
+                                    "password": {
+                                        "description": "votre password",
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "12ddkfd"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Utilisateur bien Connecter."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "500"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur de connexion"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/public/index.php/api/logout/{id}": {
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "déconnection d'un utilisateur",
+                "description": "déconnection d'un utilisateur",
+                "operationId": "logout",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "2"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "200"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Utilisateur déconnecté."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "400"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur lors du traitement de la demande"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "number",
+                                            "example": "500"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Erreur de connexion"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

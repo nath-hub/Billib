@@ -1,0 +1,6 @@
+<div>
+    
+    {{$lien}}
+    {{$qrcode}}
+    
+</div>
